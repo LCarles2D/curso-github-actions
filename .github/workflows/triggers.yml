@@ -1,0 +1,24 @@
+name: Aprendiendo triggers!
+run-name: Estoy aprendiendo Github Actions triggers!!
+on:
+  push: 
+    branches:
+      - 'main'
+      - 'aprendiendo-github-actions'
+    paths:
+      - '**.py'
+  schedule:
+    - cron: '45 5,17 * * *'
+  pull_request:
+    types: [opened, reopened]
+jobs:
+  hola-mundo:
+    runs-on: ubuntu-latest
+    steps:
+      -  name: checkout
+         uses: actions/checkout@v3
+      -  name: definir variable de nombre
+         run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+      -  name: escribir hola mundo!
+         run: python hola_mundo.p
+      
