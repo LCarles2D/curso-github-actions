@@ -1,0 +1,26 @@
+name: Expressions
+on:
+  workflow_dispatch: 
+    inputs:
+      rol:
+        description: 'Rol'
+        required: true
+        type: string
+      nombre:
+        description: 'Tu Nombre'
+        required: true
+        type: string
+jobs:
+  IT:
+    if: ${{ inputs.rol == 'IT'}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo ${{ inputs.nombre }} es un IT manager!
+  Gerencial:
+    if: ${{ inputs.rol == 'gerente' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: ${{ inputs.nombre }} es un gerente!
+    
